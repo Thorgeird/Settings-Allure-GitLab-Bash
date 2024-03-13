@@ -1,0 +1,20 @@
+stages:
+  - Allure
+
+Allure:
+  stage: Allure
+  except:
+    - schedules
+  variables:
+    GIT_STRATEGY: none
+  allow_failure: true
+  only:
+    refs:
+      - develop
+  tags:
+    - OneS
+  script:
+    - allure generate build/syntax-check/allure build/smoke/allure build/vanessa/allure build/tests/allure -c -o build/allure-result
+  artifacts:
+    paths:
+      - build/allure-result
