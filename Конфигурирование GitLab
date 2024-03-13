@@ -1,8 +1,7 @@
 Конфигурирование GitLab
-Для отображения отчета Allure в разделе артефактов необходимо в файл
-/etc/gitlab/gitlab.rb добавить настройку
-nginx['custom_gitlab_server_config'] = "location ~
-/artifacts/file/.*\.(html|txt|md|css|js|jpg|jpeg|png|json)$ {
+Для отображения отчета Allure в разделе артефактов необходимо в файл /etc/gitlab/gitlab.rb добавить настройку
+
+nginx['custom_gitlab_server_config'] = "location ~/artifacts/file/.*\.(html|txt|md|css|js|jpg|jpeg|png|json)$ {
 rewrite ^(.*)/file/(.*)$ $1/raw/$2 last;
 return 500;
 }
